@@ -92,17 +92,17 @@ namespace Plugin.GuestureLock.iOS.Renderers
         }
 
 
-        private double touch_x = 0;
-        private double touch_y = 0;
+        //private double touch_x = 0;
+        //private double touch_y = 0;
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)
         {
             base.TouchesBegan(touches, evt);
             if (touches.AnyObject is UITouch touch)
             {
-                touch_x = touch.LocationInView(this).X;
-                touch_y = touch.LocationInView(this).Y;
-                Element.ProcessTouchEvent(touch_x, touch_y);
+                //var touch_x = touch.LocationInView(this).X;
+                //var touch_y = touch.LocationInView(this).Y;
+                Element.ProcessTouchEvent(touch.LocationInView(this).X, touch.LocationInView(this).Y);
                 SetNeedsDisplay();
             }
         }
@@ -112,9 +112,9 @@ namespace Plugin.GuestureLock.iOS.Renderers
             base.TouchesMoved(touches, evt);
             if (touches.AnyObject is UITouch touch)
             {
-                touch_x = touch.LocationInView(this).X;
-                touch_y = touch.LocationInView(this).Y;
-                Element.ProcessTouchEvent(touch_x, touch_y);
+                //var touch_x = touch.LocationInView(this).X;
+                //var touch_y = touch.LocationInView(this).Y;
+                Element.ProcessTouchEvent(touch.LocationInView(this).X, touch.LocationInView(this).Y);
                 SetNeedsDisplay();
             }
         }
@@ -135,6 +135,15 @@ namespace Plugin.GuestureLock.iOS.Renderers
             base.TouchesEnded(touches, evt);
             Element.Reset();
             SetNeedsDisplay();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && Element != null)
+            {
+                Element.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

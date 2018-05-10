@@ -24,13 +24,21 @@ namespace Plugin.GuestureLock.Control
         public int X_Zero = 0;
         public int Y_Zero = 0;
 
-        
+        /// <summary>
+        /// 未选中状态的圆点
+        /// </summary>
         public List<Vector2> pointList = new List<Vector2>();
-
+        /// <summary>
+        /// 选中状态的圆点
+        /// </summary>
         public List<Vector2> checkedList = new List<Vector2>();
-
+        /// <summary>
+        /// 需要绘制的圆点
+        /// </summary>
         public List<Vector2> drawList = new List<Vector2>();
-
+        /// <summary>
+        /// 选中的圆点索引
+        /// </summary>
         public List<int> indexList = new List<int>();
         #endregion
 
@@ -218,6 +226,14 @@ namespace Plugin.GuestureLock.Control
         {
             checkedList.Clear();
             drawList.Clear();
+        }
+
+        public void Dispose()
+        {
+            pointList.Clear();
+            drawList.Clear();
+            checkedList.Clear();
+            indexList.Clear();
         }
 
         #endregion

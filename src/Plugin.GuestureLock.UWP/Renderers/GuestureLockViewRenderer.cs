@@ -105,9 +105,9 @@ namespace Plugin.GuestureLock.UWP.Renderers
         private void Process(double x,double y)
         {
 
-            touch_x = x;
-            touch_y = y;
-            Element.ProcessTouchEvent(touch_x, touch_y);
+            //touch_x = x;
+            //touch_y = y;
+            Element.ProcessTouchEvent(x, y);
             Control?.Invalidate();
         }
 
@@ -122,12 +122,16 @@ namespace Plugin.GuestureLock.UWP.Renderers
             Control?.Invalidate();
         }
 
-        protected override void SetAutomationId(string id)
-        {
-            base.SetAutomationId(id);
-        }
+        //private double touch_x = 0;
+        //private double touch_y = 0;
 
-        private double touch_x = 0;
-        private double touch_y = 0;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && Element != null)
+            {
+                Element.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

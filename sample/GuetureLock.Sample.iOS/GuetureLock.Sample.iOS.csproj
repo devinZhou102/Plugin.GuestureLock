@@ -124,13 +124,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.iOS\Plugin.GuestureLock.iOS.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock.iOS\Plugin.GuestureLock.iOS.csproj">
       <Project>{deb9ca7c-7d8a-4f38-aae4-4f8b8d0ede0a}</Project>
       <Name>Plugin.GuestureLock.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
       <Project>{6232ce1d-670e-4c3f-9dc0-f0f2d461c56e}</Project>
       <Name>Plugin.GuestureLock</Name>
       <Private>True</Private>

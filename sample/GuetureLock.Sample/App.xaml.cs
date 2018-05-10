@@ -12,8 +12,7 @@ namespace GuetureLock.Sample
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new GuetureLock.Sample.MainPage();
+			MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

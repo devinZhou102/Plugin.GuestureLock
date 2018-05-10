@@ -31,17 +31,18 @@ namespace Plugin.GuestureLock.Droid.Renderers
         {
         }
 
-        private double touch_x = 0;
-        private double touch_y = 0;
+       // private double touch_x = 0;
+        //private double touch_y = 0;
         public bool OnTouch(Android.Views.View v, MotionEvent e)
         {
             switch (e.Action)
             {
                 case MotionEventActions.Down:
                 case MotionEventActions.Move:
-                    touch_x = e.GetX();
-                    touch_y = e.GetY();
-                    Element.ProcessTouchEvent(touch_x, touch_y);
+                    //touch_x = e.GetX();
+                    //touch_y = e.GetY();
+                    //Element.ProcessTouchEvent(touch_x, touch_y);
+                    Element.ProcessTouchEvent(e.GetX(), e.GetY());
                     PostInvalidate();
                     break;
                 case MotionEventActions.Up:
@@ -122,6 +123,15 @@ namespace Plugin.GuestureLock.Droid.Renderers
                 PostInvalidate();
             }
 
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing && Element != null)
+            {
+                Element.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
     }

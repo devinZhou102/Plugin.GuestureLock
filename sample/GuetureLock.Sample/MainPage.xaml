@@ -10,7 +10,7 @@
            Margin="12"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-        <controls:GuestureLockView WidthRequest="320" HeightRequest="320" BackgroundColor="Transparent"/>
+        <Button Text="Lock" Clicked="Button_Clicked"/>
     </StackLayout>
 
 </ContentPage>

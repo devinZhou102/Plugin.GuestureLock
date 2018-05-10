@@ -152,11 +152,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.UWP\Plugin.GuestureLock.UWP.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock.UWP\Plugin.GuestureLock.UWP.csproj">
       <Project>{2e19c4ea-b371-4688-bf67-56e560df69d7}</Project>
       <Name>Plugin.GuestureLock.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
       <Project>{6232ce1d-670e-4c3f-9dc0-f0f2d461c56e}</Project>
       <Name>Plugin.GuestureLock</Name>
     </ProjectReference>

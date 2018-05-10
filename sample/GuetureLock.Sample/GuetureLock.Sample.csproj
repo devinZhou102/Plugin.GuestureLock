@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock\Plugin.GuestureLock.csproj" />
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,5 +19,11 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="DetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

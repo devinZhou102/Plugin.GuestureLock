@@ -80,11 +80,11 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.Android\Plugin.GuestureLock.Android.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock.Android\Plugin.GuestureLock.Android.csproj">
       <Project>{c29937a5-eaa5-4780-85ae-fbf687ec0f58}</Project>
       <Name>Plugin.GuestureLock.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Plugin.GuestureLock\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
+    <ProjectReference Include="..\..\src\Plugin.GuestureLock\Plugin.GuestureLock.csproj">
       <Project>{6232ce1d-670e-4c3f-9dc0-f0f2d461c56e}</Project>
       <Name>Plugin.GuestureLock</Name>
     </ProjectReference>

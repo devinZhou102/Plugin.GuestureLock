@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="d3f58c4f-7485-4be3-9c40-681fbe2c83f5"
-    Publisher="CN=23ecb1cd-043d-405b-9fab-170fac8e8e4d"
+    Name="005b2663-462c-43eb-a3dd-014871bfb4e0"
+    Publisher="CN=1473e158-98f4-4bcb-a4d5-e694ab47454f"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Plugin.GuestureLock.UWP</DisplayName>
-    <PublisherDisplayName>23ecb1cd-043d-405b-9fab-170fac8e8e4d</PublisherDisplayName>
+    <PublisherDisplayName>1473e158-98f4-4bcb-a4d5-e694ab47454f</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -37,7 +37,13 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Plugin.GuestureLock.UWP"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>

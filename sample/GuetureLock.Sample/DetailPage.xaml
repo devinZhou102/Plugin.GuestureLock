@@ -6,11 +6,11 @@
              x:Class="GuetureLock.Sample.DetailPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Orientation="Vertical">
-            <Label Text="Welcome to Xamarin.Forms!" 
+            <Label x:Name="TextResult" Text="Welcome to Xamarin.Forms!" 
            Margin="12"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-            <controls:GuestureLockView WidthRequest="320" HeightRequest="320" BackgroundColor="Transparent"/>
+            <controls:GuestureLockView x:Name="LockView" WidthRequest="320" HeightRequest="320" BackgroundColor="Transparent"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -12,9 +12,31 @@ namespace GuetureLock.Sample
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetailPage : ContentPage
 	{
-		public DetailPage ()
-		{
-			InitializeComponent ();
+        public DetailPage()
+        {
+            InitializeComponent();
+            Appearing += DetailPage_Appearing;
+            Disappearing += DetailPage_Disappearing;
 		}
-	}
+
+        private void DetailPage_Disappearing(object sender, EventArgs e)
+        {
+            LockView.CheckCompeleteEvent -= LockView_CheckCompeleteEvent;
+        }
+
+        private void LockView_CheckCompeleteEvent(List<int> checkList)
+        {
+            var result = "";
+            foreach(var item in checkList)
+            {
+                result += item + " ";
+            }
+            TextResult.Text = result;
+        }
+
+        private void DetailPage_Appearing(object sender, EventArgs e)
+        {
+            LockView.CheckCompeleteEvent += LockView_CheckCompeleteEvent;
+        }
+    }
 }

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Renderers\GuestureLockViewRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ImpDroidDensityConvertService.cs" />
     <Compile Include="Utils\DensityUtil.cs" />
   </ItemGroup>
   <ItemGroup>

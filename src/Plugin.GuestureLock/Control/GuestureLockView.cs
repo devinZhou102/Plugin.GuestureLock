@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.GuestureLock.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,11 @@ namespace Plugin.GuestureLock.Control
         public int Distance = 40;
         public int Circle_r = 3;
 
-        public int Length = 0;
+        //public int Length = 0;
 
-        public double ViewWidth = 0;
-        public double ViewHight = 0;
-        public double MyPadding = 0;
+        private double ViewWidth = 0;
+        private double ViewHight = 0;
+        //public double MyPadding = 0;
 
         public int X_Zero = 0;
         public int Y_Zero = 0;
@@ -40,6 +41,8 @@ namespace Plugin.GuestureLock.Control
         /// 选中的圆点索引
         /// </summary>
         public List<int> indexList = new List<int>();
+        
+
         #endregion
 
         #region event
@@ -65,6 +68,7 @@ namespace Plugin.GuestureLock.Control
         #region constructor
         public GuestureLockView()
         {
+            
 
         }
         #endregion
@@ -74,6 +78,22 @@ namespace Plugin.GuestureLock.Control
 
         public void ProcessTouchEvent(double x, double y)
         {
+            if(ViewWidth == 0)
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.Android:
+                        var service = DependencyService.Get<IDensityConvertService>();
+                        ViewWidth = service.Dp2Px((int)WidthRequest);
+                        ViewHight = service.Dp2Px((int)HeightRequest);
+                        break;
+                    default:
+                        ViewWidth = WidthRequest;
+                        ViewHight = HeightRequest;
+                        break;
+                }
+            }
+
             if (x < 0 || y < 0 || x > ViewWidth || y > ViewHight)
             {
 

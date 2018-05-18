@@ -23,13 +23,10 @@ namespace Plugin.GuestureLock.UWP.Renderers
 
         void Initialize()
         {
-            Element.Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
-            Element.ViewWidth = 320f;
-            Element.ViewHight = 320f;
-
-            Element.MyPadding = (Element.ViewWidth - Element.Length) / 2;
-            Element.X_Zero = (int)Element.MyPadding + Element.Circle_R;
-            Element.Y_Zero = (int)Element.MyPadding + Element.Circle_R;
+             var Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
+            var MyPadding = (int)((Element.WidthRequest - Length) / 2);
+            Element.X_Zero = MyPadding + Element.Circle_R;
+            Element.Y_Zero = MyPadding + Element.Circle_R;
             Element.InitPointList();
         }
 
@@ -104,9 +101,6 @@ namespace Plugin.GuestureLock.UWP.Renderers
 
         private void Process(double x,double y)
         {
-
-            //touch_x = x;
-            //touch_y = y;
             Element.ProcessTouchEvent(x, y);
             Control?.Invalidate();
         }
@@ -121,9 +115,6 @@ namespace Plugin.GuestureLock.UWP.Renderers
             Element.Reset();
             Control?.Invalidate();
         }
-
-        //private double touch_x = 0;
-        //private double touch_y = 0;
 
         protected override void Dispose(bool disposing)
         {

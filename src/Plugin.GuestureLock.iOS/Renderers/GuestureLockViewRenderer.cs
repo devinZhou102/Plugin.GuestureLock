@@ -68,13 +68,11 @@ namespace Plugin.GuestureLock.iOS.Renderers
 
         void Initialize()
         {
-            Element.Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
-            Element.ViewWidth = 320f;
-            Element.ViewHight = 320f;
+            var Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
 
-            Element.MyPadding = (Element.ViewWidth - Element.Length) / 2;
-            Element.X_Zero = (int)Element.MyPadding + Element.Circle_R;
-            Element.Y_Zero = (int)Element.MyPadding + Element.Circle_R;
+            int MyPadding = (int)((Element.WidthRequest - Length) / 2);
+            Element.X_Zero = MyPadding + Element.Circle_R;
+            Element.Y_Zero = MyPadding + Element.Circle_R;
             Element.InitPointList();
         }
 

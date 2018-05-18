@@ -30,18 +30,13 @@ namespace Plugin.GuestureLock.Droid.Renderers
         public GuestureLockViewRenderer(Context context) : base(context)
         {
         }
-
-       // private double touch_x = 0;
-        //private double touch_y = 0;
+        
         public bool OnTouch(Android.Views.View v, MotionEvent e)
         {
             switch (e.Action)
             {
                 case MotionEventActions.Down:
                 case MotionEventActions.Move:
-                    //touch_x = e.GetX();
-                    //touch_y = e.GetY();
-                    //Element.ProcessTouchEvent(touch_x, touch_y);
                     Element.ProcessTouchEvent(e.GetX(), e.GetY());
                     PostInvalidate();
                     break;
@@ -100,13 +95,11 @@ namespace Plugin.GuestureLock.Droid.Renderers
             Element.Circle_r = DensityUtil.Dp2px(Context, 3f);
             Element.Circle_R = DensityUtil.Dp2px(Context, 20f);
             Element.Distance = DensityUtil.Dp2px(Context, 40f);
-            Element.Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
-            Element.ViewWidth = DensityUtil.Dp2px(Context, 320f);
-            Element.ViewHight = DensityUtil.Dp2px(Context, 320f);
-
-            Element.MyPadding = (Element.ViewWidth - Element.Length) / 2;
-            Element.X_Zero = (int)Element.MyPadding + Element.Circle_R;
-            Element.Y_Zero = (int)Element.MyPadding + Element.Circle_R;
+            var Length = 3 * Element.Circle_R * 2 + Element.Distance * 2;
+            int MyWidth = DensityUtil.Dp2px(Context, (float)Element.WidthRequest);
+            int MyPadding = (int)((MyWidth - Length) / 2);
+            Element.X_Zero = MyPadding + Element.Circle_R;
+            Element.Y_Zero = MyPadding + Element.Circle_R;
             paint = new Paint();
             SetOnTouchListener(this);
             Element.InitPointList();

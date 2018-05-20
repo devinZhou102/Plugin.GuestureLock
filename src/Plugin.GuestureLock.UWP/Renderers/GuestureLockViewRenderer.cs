@@ -34,7 +34,7 @@ namespace Plugin.GuestureLock.UWP.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<GuestureLockView> e)
         {
             base.OnElementChanged(e);
-            if(Control == null)
+            if(e.OldElement == null)
             {
                 SetNativeControl(new CanvasControl());
             }
@@ -107,12 +107,7 @@ namespace Plugin.GuestureLock.UWP.Renderers
 
         private void Control_ManipulationCompleted(object sender, Windows.UI.Xaml.Input.ManipulationCompletedRoutedEventArgs e)
         {
-            Element.GetCheckedIndex();
-            if (Element._CheckCompeleteDelegate != null)
-            {
-                Element._CheckCompeleteDelegate.Invoke(Element.indexList);
-            }
-            Element.Reset();
+            Element.Complete();
             Control?.Invalidate();
         }
 

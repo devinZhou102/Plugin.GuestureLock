@@ -98,8 +98,6 @@ namespace Plugin.GuestureLock.iOS.Renderers
             base.TouchesBegan(touches, evt);
             if (touches.AnyObject is UITouch touch)
             {
-                //var touch_x = touch.LocationInView(this).X;
-                //var touch_y = touch.LocationInView(this).Y;
                 Element.ProcessTouchEvent(touch.LocationInView(this).X, touch.LocationInView(this).Y);
                 SetNeedsDisplay();
             }
@@ -110,8 +108,6 @@ namespace Plugin.GuestureLock.iOS.Renderers
             base.TouchesMoved(touches, evt);
             if (touches.AnyObject is UITouch touch)
             {
-                //var touch_x = touch.LocationInView(this).X;
-                //var touch_y = touch.LocationInView(this).Y;
                 Element.ProcessTouchEvent(touch.LocationInView(this).X, touch.LocationInView(this).Y);
                 SetNeedsDisplay();
             }
@@ -120,12 +116,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
         public override void TouchesEnded(NSSet touches, UIEvent evt)
         {
             base.TouchesEnded(touches, evt);
-            Element.GetCheckedIndex();
-            if (Element._CheckCompeleteDelegate != null)
-            {
-                Element._CheckCompeleteDelegate.Invoke(Element.indexList);
-            }
-            Element.Reset();
+            Element.Complete();
             SetNeedsDisplay();
         }
         public override void TouchesCancelled(NSSet touches, UIEvent evt)

@@ -41,12 +41,7 @@ namespace Plugin.GuestureLock.Droid.Renderers
                     PostInvalidate();
                     break;
                 case MotionEventActions.Up:
-                    Element.GetCheckedIndex();
-                    if (Element._CheckCompeleteDelegate != null)
-                    {
-                        Element._CheckCompeleteDelegate.Invoke(Element.indexList);
-                    }
-                    Element.Reset();
+                    Element.Complete();
                     PostInvalidate();
                     break;
             }

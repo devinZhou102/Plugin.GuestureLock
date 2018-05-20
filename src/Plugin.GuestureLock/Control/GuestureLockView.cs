@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Plugin.GuestureLock.Control
@@ -11,17 +11,18 @@ namespace Plugin.GuestureLock.Control
 	public class GuestureLockView : View
 	{
         #region Fields
-
+        //big circle Radius
         public int Circle_R = 20;
-        public int Distance = 40;
+        //center circle Radius
         public int Circle_r = 3;
+        //distance between two circles
+        public int Distance = 40;
 
-        //public int Length = 0;
-
+        //use in when RuntimePlatform is Android
         private double ViewWidth = 0;
         private double ViewHight = 0;
-        //public double MyPadding = 0;
 
+        //the center of the first circle
         public int X_Zero = 0;
         public int Y_Zero = 0;
 
@@ -41,7 +42,31 @@ namespace Plugin.GuestureLock.Control
         /// 选中的圆点索引
         /// </summary>
         public List<int> indexList = new List<int>();
+
+        public static readonly BindableProperty CheckCompeleCommandProperty = BindableProperty.Create("CheckCompeleCommand", typeof(ICommand), typeof(GuestureLockView), null, propertyChanged: (bo, o, n) => ((GuestureLockView)bo).OnCommandChanged());
         
+        void OnCommandChanged()
+        {
+        }
+        #endregion
+
+        #region Command
+
+        public ICommand CheckCompeleCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(CheckCompeleCommandProperty);
+            }
+
+            set
+            {
+                if (CheckCompeleCommand != value)
+                {
+                    SetValue(CheckCompeleCommandProperty, value);
+                }
+            }
+        } 
 
         #endregion
 
@@ -75,6 +100,19 @@ namespace Plugin.GuestureLock.Control
 
         #region function
 
+        public void Complete()
+        {
+            GetCheckedIndex();
+            if (_CheckCompeleteDelegate != null)
+            {
+                _CheckCompeleteDelegate.Invoke(indexList);
+            }
+            if (CheckCompeleCommand != null)
+            {
+                CheckCompeleCommand.Execute(indexList);
+            }
+            Reset();
+        }
 
         public void ProcessTouchEvent(double x, double y)
         {
@@ -122,9 +160,6 @@ namespace Plugin.GuestureLock.Control
                     drawList.AddRange(checkedList);
                     drawList.Add(item);
                 }
-                //PostInvalidate();
-
-                //todo refresh view
             }
         }
 

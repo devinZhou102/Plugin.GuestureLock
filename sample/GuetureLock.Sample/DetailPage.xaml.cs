@@ -12,11 +12,16 @@ namespace GuetureLock.Sample
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetailPage : ContentPage
 	{
+        DetailViewModel viewModel;
         public DetailPage()
         {
             InitializeComponent();
+
+            viewModel = new DetailViewModel();
+            BindingContext = viewModel;
             Appearing += DetailPage_Appearing;
             Disappearing += DetailPage_Disappearing;
+
 		}
 
         private void DetailPage_Disappearing(object sender, EventArgs e)
@@ -38,5 +43,6 @@ namespace GuetureLock.Sample
         {
             LockView.CheckCompeleteEvent += LockView_CheckCompeleteEvent;
         }
+
     }
 }

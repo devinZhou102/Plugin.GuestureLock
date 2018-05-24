@@ -12,6 +12,7 @@ using GuestureLockView = Plugin.GuestureLock.Control.GuestureLockView;
 using System.Numerics;
 using Windows.UI;
 using Windows.UI.Xaml;
+using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(GuestureLockView), typeof(GuestureLockViewRenderer))]
 namespace Plugin.GuestureLock.UWP.Renderers
@@ -56,12 +57,12 @@ namespace Plugin.GuestureLock.UWP.Renderers
         }
 
 
-        private Vector2 GetVector2(GuestureLock.Control.Vector2 v2)
+        private Vector2 GetVector2(Vec2 v2)
         {
             Vector2 item = new Vector2
             {
-                X = v2.X,
-                Y = v2.Y
+                X = (float)v2.X,
+                Y = (float)v2.Y
             };
             return item;
         }

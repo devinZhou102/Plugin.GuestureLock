@@ -58,27 +58,27 @@ namespace Plugin.GuestureLock.Droid.Renderers
             paint.AntiAlias = true;
             for (int i = 0; i < size; i++)//绘制元素点图
             {
-                Vector2 item = Element.pointList.ElementAt(i);
+                Vec2 item = Element.pointList.ElementAt(i);
                 paint.Color = Android.Graphics.Color.Blue;
                 paint.SetStyle(Paint.Style.Fill);//设置为实心
-                canvas.DrawCircle(item.X, item.Y, Element.Circle_r, paint);
+                canvas.DrawCircle((int)item.X, (int)item.Y, Element.Circle_r, paint);
                 paint.SetStyle(Paint.Style.Stroke);//设置为空心
-                canvas.DrawCircle(item.X, item.Y, Element.Circle_R, paint);
+                canvas.DrawCircle((int)item.X, (int)item.Y, Element.Circle_R, paint);
             }
             size = Element.drawList.Count;
             for (int i = 0; i < size; i++)//绘制选中点图
             {
-                Vector2 item = Element.drawList.ElementAt(i);
+                Vec2 item = Element.drawList.ElementAt(i);
                 paint.Color = Android.Graphics.Color.Red;
                 paint.SetStyle(Paint.Style.Fill);//设置为实心
-                canvas.DrawCircle(item.X, item.Y, Element.Circle_r, paint);
+                canvas.DrawCircle((int)item.X, (int)item.Y, Element.Circle_r, paint);
                 if (i < size - 1)
                 {
-                    Vector2 item2 = Element.drawList.ElementAt(i + 1);
+                    Vec2 item2 = Element.drawList.ElementAt(i + 1);
                     paint.Color = Android.Graphics.Color.Red;
-                    canvas.DrawLine(item.X, item.Y, item2.X, item2.Y, paint);
+                    canvas.DrawLine((int)item.X, (int)item.Y, (int)item2.X, (int)item2.Y, paint);
                     paint.SetStyle(Paint.Style.Stroke);//设置为空心
-                    canvas.DrawCircle(item.X, item.Y, Element.Circle_R, paint);
+                    canvas.DrawCircle((int)item.X,(int)item.Y, Element.Circle_R, paint);
                 }
             }
 

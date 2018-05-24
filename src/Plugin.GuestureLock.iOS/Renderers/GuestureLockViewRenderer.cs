@@ -27,7 +27,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
 
             for (int i = 0; i < size; i++)//绘制元素点图
             {
-                Vector2 item = Element.pointList.ElementAt(i);
+                Vec2 item = Element.pointList.ElementAt(i);
 
                 cGContext.SetFillColor(UIColor.Blue.CGColor);
                 cGContext.AddEllipseInRect(new CGRect(item.X - Element.Circle_r, item.Y - Element.Circle_r, Element.Circle_r * 2, Element.Circle_r * 2));
@@ -41,7 +41,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
             size = Element.drawList.Count;
             for (int i = 0; i < size; i++)//绘制选中点图
             {
-                Vector2 item = Element.drawList.ElementAt(i);
+                Vec2 item = Element.drawList.ElementAt(i);
 
 
                 cGContext.SetFillColor(UIColor.Red.CGColor);
@@ -49,11 +49,11 @@ namespace Plugin.GuestureLock.iOS.Renderers
                 cGContext.DrawPath(CGPathDrawingMode.Fill);
                 if (i < size - 1)
                 {
-                    Vector2 item2 = Element.drawList.ElementAt(i + 1);
+                    Vec2 item2 = Element.drawList.ElementAt(i + 1);
 
                     cGContext.SetStrokeColor(UIColor.Red.CGColor);
-                    cGContext.MoveTo(item.X, item.Y);
-                    cGContext.AddLineToPoint(item2.X, item2.Y);
+                    cGContext.MoveTo((float)item.X, (float)item.Y);
+                    cGContext.AddLineToPoint((float)item2.X, (float)item2.Y);
                     cGContext.DrawPath(CGPathDrawingMode.Stroke);
 
                     cGContext.SetStrokeColor(UIColor.Red.CGColor);

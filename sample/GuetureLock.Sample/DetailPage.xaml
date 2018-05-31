@@ -14,7 +14,7 @@
            Margin="12"
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-            <controls:GuestureLockView x:Name="LockView" WidthRequest="320" CheckCompeleCommand="{Binding CompleteCommand}" HeightRequest="320" BackgroundColor="Transparent"/>
+            <controls:GuestureLockView x:Name="LockView" WidthRequest="320" CheckCompleteCommand="{Binding CompleteCommand}" HeightRequest="320" BackgroundColor="Transparent"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

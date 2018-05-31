@@ -3,7 +3,7 @@
     <metadata>
         <!-- Required elements-->
         <id>Plugin.GuestureLock</id>
-        <version>1.0.0.0</version>
+        <version>1.0.0.2</version>
         <description>A GuestureLock library for Xamarin.Forms.</description>
         <authors>DevinZhou</authors>
         <owners>DevinZhou</owners>
@@ -31,10 +31,10 @@
         <file src="src\Plugin.GuestureLock.iOS\bin\iPhone\Release\Plugin.GuestureLock.*" target="lib\Xamarin.iOS10"  />
         
         <!-- UWP -->
-        <file src="src\Plugin.GuestureLock.UWP\bin\x86\Release\Plugin.GuestureLock.*" target="lib\x86" />
+        <file src="src\Plugin.GuestureLock.UWP\bin\x86\Release\Plugin.GuestureLock.*" target="lib\UAP10\x86"  />
         
-        <file src="src\Plugin.GuestureLock.UWP\bin\x64\Release\Plugin.GuestureLock.*" target="lib\x64" />
+        <file src="src\Plugin.GuestureLock.UWP\bin\x64\Release\Plugin.GuestureLock.*" target="lib\UAP10\x64"  />
         
-        <file src="src\Plugin.GuestureLock.UWP\bin\ARM\Release\Plugin.GuestureLock.*" target="lib\ARM" />
+        <file src="src\Plugin.GuestureLock.UWP\bin\ARM\Release\Plugin.GuestureLock.*" target="lib\UAP10\ARM" />
     </files>
 </package>

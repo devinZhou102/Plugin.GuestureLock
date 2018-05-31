@@ -43,7 +43,7 @@ namespace Plugin.GuestureLock.Control
         /// </summary>
         public List<int> indexList = new List<int>();
 
-        public static readonly BindableProperty CheckCompeleCommandProperty = BindableProperty.Create("CheckCompeleCommand", typeof(ICommand), typeof(GuestureLockView), null, propertyChanged: (bo, o, n) => ((GuestureLockView)bo).OnCommandChanged());
+        public static readonly BindableProperty CheckCompleteCommandProperty = BindableProperty.Create("CheckCompleteCommand", typeof(ICommand), typeof(GuestureLockView), null, propertyChanged: (bo, o, n) => ((GuestureLockView)bo).OnCommandChanged());
         
         void OnCommandChanged()
         {
@@ -52,18 +52,18 @@ namespace Plugin.GuestureLock.Control
 
         #region Command
 
-        public ICommand CheckCompeleCommand
+        public ICommand CheckCompleteCommand
         {
             get
             {
-                return (ICommand)GetValue(CheckCompeleCommandProperty);
+                return (ICommand)GetValue(CheckCompleteCommandProperty);
             }
 
             set
             {
-                if (CheckCompeleCommand != value)
+                if (CheckCompleteCommand != value)
                 {
-                    SetValue(CheckCompeleCommandProperty, value);
+                    SetValue(CheckCompleteCommandProperty, value);
                 }
             }
         } 
@@ -72,19 +72,19 @@ namespace Plugin.GuestureLock.Control
 
         #region event
 
-        public delegate void CheckCompeleteDelegate(List<int> checkList);
+        public delegate void CheckCompleteDelegate(List<int> checkList);
 
-        public CheckCompeleteDelegate _CheckCompeleteDelegate;
+        public CheckCompleteDelegate _CheckCompleteDelegate;
 
-        public event CheckCompeleteDelegate CheckCompeleteEvent
+        public event CheckCompleteDelegate CheckCompleteEvent
         {
             add
             {
-                _CheckCompeleteDelegate = Delegate.Combine(_CheckCompeleteDelegate, value) as CheckCompeleteDelegate;
+                _CheckCompleteDelegate = Delegate.Combine(_CheckCompleteDelegate, value) as CheckCompleteDelegate;
             }
             remove
             {
-                _CheckCompeleteDelegate = Delegate.Remove(_CheckCompeleteDelegate, value) as CheckCompeleteDelegate;
+                _CheckCompleteDelegate = Delegate.Remove(_CheckCompleteDelegate, value) as CheckCompleteDelegate;
             }
         }
 
@@ -103,13 +103,13 @@ namespace Plugin.GuestureLock.Control
         public void Complete()
         {
             GetCheckedIndex();
-            if (_CheckCompeleteDelegate != null)
+            if (_CheckCompleteDelegate != null)
             {
-                _CheckCompeleteDelegate.Invoke(indexList);
+                _CheckCompleteDelegate.Invoke(indexList);
             }
-            if (CheckCompeleCommand != null)
+            if (CheckCompleteCommand != null)
             {
-                CheckCompeleCommand.Execute(indexList);
+                CheckCompleteCommand.Execute(indexList);
             }
             Reset();
         }

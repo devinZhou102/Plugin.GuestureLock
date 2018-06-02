@@ -103,13 +103,16 @@ namespace Plugin.GuestureLock.Control
         public void Complete()
         {
             GetCheckedIndex();
-            if (_CheckCompleteDelegate != null)
+            if(indexList != null && indexList.Count > 0)
             {
-                _CheckCompleteDelegate.Invoke(indexList);
-            }
-            if (CheckCompleteCommand != null)
-            {
-                CheckCompleteCommand.Execute(indexList);
+                if (_CheckCompleteDelegate != null)
+                {
+                    _CheckCompleteDelegate.Invoke(indexList);
+                }
+                if (CheckCompleteCommand != null)
+                {
+                    CheckCompleteCommand.Execute(indexList);
+                }
             }
             Reset();
         }

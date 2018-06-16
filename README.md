@@ -4,7 +4,17 @@ GuestureLock for Xamarin.Forms
 Custom Renderers Practice
 
 <div>
-<img src="/image/Lock.Droid.png" width=256/>
-<img src="/image/Lock.UWP.png" width=256/>
-<img src="/image/lock.iOS.png" width=256/>
+  <div>
+    #Android
+    <img src="/image/Lock.Droid.png" height=350/>
+  </div>
+  
+  <div>
+    #UWP
+    <img src="/image/Lock.UWP.png" height=350/>
+  </div>
+  <div>
+    #iOS
+    <img src="/image/lock.iOS.png" height=350/>
+  </div>
 </div>

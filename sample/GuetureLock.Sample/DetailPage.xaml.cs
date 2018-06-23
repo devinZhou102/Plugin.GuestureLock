@@ -26,10 +26,10 @@ namespace GuetureLock.Sample
 
         private void DetailPage_Disappearing(object sender, EventArgs e)
         {
-            LockView.CheckCompeleteEvent -= LockView_CheckCompeleteEvent;
+            LockView.CheckCompleteEvent -= LockView_CheckCompleteEvent;
         }
 
-        private void LockView_CheckCompeleteEvent(List<int> checkList)
+        private void LockView_CheckCompleteEvent(List<int> checkList)
         {
             var result = "";
             foreach(var item in checkList)
@@ -41,7 +41,7 @@ namespace GuetureLock.Sample
 
         private void DetailPage_Appearing(object sender, EventArgs e)
         {
-            LockView.CheckCompeleteEvent += LockView_CheckCompeleteEvent;
+            LockView.CheckCompleteEvent += LockView_CheckCompleteEvent;
         }
 
     }

@@ -247,16 +247,14 @@ namespace Plugin.GuestureLock.Control
         {
             //DebugUtil.WriteLine("Distance   == "+ Distance);
             int deta_x = 0;
-            int deta_y = 0;
             int x = 0;
             int y = 0;
             for (int i = 0; i < 9; i++)
             {
                 deta_x = i % 3;
-                deta_y = i / 3;
+                int deta_y = i / 3;
                 x = X_Zero + deta_x * (Distance + 2 * Circle_R);
                 y = Y_Zero + deta_y * (Distance + 2 * Circle_R);
-
                 //DebugUtil.WriteLine("index("+i+") x = " + x + "  y = "+y);
                 pointList.Add(new Vec2
                 {

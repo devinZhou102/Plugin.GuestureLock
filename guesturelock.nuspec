@@ -3,14 +3,14 @@
     <metadata>
         <!-- Required elements-->
         <id>Plugin.GuestureLock</id>
-        <version>1.0.0.3</version>
-        <description>A GuestureLock library for Xamarin.Forms.</description>
-        <authors>DevinZhou</authors>
-        <owners>DevinZhou</owners>
+        <version>1.0.0.6</version>
+        <description>A GuestureLock library for Xamarin.Forms and for private usage.</description>
+        <authors>devinzhou</authors>
+        <owners>devinzhou</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Devin - GuestureLock</title>
         <releaseNotes>
-            Enable to set Visibility Title 
+            Update Xamarin.Forms 4.0
         </releaseNotes>
         <summary>A GuestureLock library for Xamarin.Forms.</summary>
         <!-- <iconUrl></iconUrl> -->

@@ -29,15 +29,15 @@ namespace Plugin.GuestureLock.Control
         /// <summary>
         /// 未选中状态的圆点
         /// </summary>
-        public List<Vec2> pointList = new List<Vec2>();
+        public List<Point> pointList = new List<Point>();
         /// <summary>
         /// 选中状态的圆点
         /// </summary>
-        public List<Vec2> checkedList = new List<Vec2>();
+        public List<Point> checkedList = new List<Point>();
         /// <summary>
         /// 需要绘制的圆点
         /// </summary>
-        public List<Vec2> drawList = new List<Vec2>();
+        public List<Point> drawList = new List<Point>();
         /// <summary>
         /// 选中的圆点索引
         /// </summary>
@@ -141,13 +141,13 @@ namespace Plugin.GuestureLock.Control
             }
             else
             {
-                Vec2 item = CheckRange(x, y, out bool isIn);
+                Point item = CheckRange(x, y, out bool isIn);
                 if (isIn && !IsAdded(item))
                 {
                     if (checkedList.Count > 0)
                     {
                         var item2 = checkedList.Last();
-                        foreach (Vec2 v in pointList)
+                        foreach (Point v in pointList)
                         {
                             if (!item.Equals(v) && !IsAdded(v) && CheckOnLine(item, item2, v))
                             {
@@ -175,7 +175,7 @@ namespace Plugin.GuestureLock.Control
         /// <param name="v2"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        private bool CheckOnLine(Vec2 v1, Vec2 v2, Vec2 v)
+        private bool CheckOnLine(Point v1, Point v2, Point v)
         {
             double len = CalcLengthBetweenTwoPoint(v1, v2);
             double len1 = CalcLengthBetweenTwoPoint(v1, v);
@@ -189,7 +189,7 @@ namespace Plugin.GuestureLock.Control
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        private double CalcLengthBetweenTwoPoint(Vec2 v1, Vec2 v2)
+        private double CalcLengthBetweenTwoPoint(Point v1, Point v2)
         {
             double value = Math.Pow(v1.X - v2.X, 2.0) + Math.Pow(v1.Y - v2.Y, 2.0);
             //return value;
@@ -203,9 +203,9 @@ namespace Plugin.GuestureLock.Control
         /// <param name="y"></param>
         /// <param name="isIn"></param>
         /// <returns></returns>
-        private Vec2 CheckRange(double x, double y, out bool isIn)
+        private Point CheckRange(double x, double y, out bool isIn)
         {
-            foreach (Vec2 v in pointList)
+            foreach (Point v in pointList)
             {
                 if (IsInCircle(x, y, v) && !IsAdded(v))
                 {
@@ -214,7 +214,7 @@ namespace Plugin.GuestureLock.Control
                 }
             }
             isIn = false;
-            return new Vec2 { X = (int)x, Y = (int)y };
+            return new Point { X = (int)x, Y = (int)y };
 
         }
 
@@ -225,7 +225,7 @@ namespace Plugin.GuestureLock.Control
         /// <param name="y"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        private bool IsInCircle(double x, double y, Vec2 v)
+        private bool IsInCircle(double x, double y, Point v)
         {
             return Math.Pow(x - v.X, 2.0) + Math.Pow(y - v.Y, 2.0) <= Math.Pow(Circle_R, 2.0);
         }
@@ -235,7 +235,7 @@ namespace Plugin.GuestureLock.Control
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private bool IsAdded(Vec2 item)
+        private bool IsAdded(Point item)
         {
             return checkedList.Contains(item);
         }
@@ -256,7 +256,7 @@ namespace Plugin.GuestureLock.Control
                 x = X_Zero + deta_x * (Distance + 2 * Circle_R);
                 y = Y_Zero + deta_y * (Distance + 2 * Circle_R);
                 //DebugUtil.WriteLine("index("+i+") x = " + x + "  y = "+y);
-                pointList.Add(new Vec2
+                pointList.Add(new Point
                 {
                     X = x,
                     Y = y

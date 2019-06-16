@@ -27,7 +27,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
 
             for (int i = 0; i < size; i++)//绘制元素点图
             {
-                Vec2 item = Element.pointList.ElementAt(i);
+                Point item = Element.pointList.ElementAt(i);
 
                 cGContext.SetFillColor(UIColor.Blue.CGColor);
                 cGContext.AddEllipseInRect(new CGRect(item.X - Element.Circle_r, item.Y - Element.Circle_r, Element.Circle_r * 2, Element.Circle_r * 2));
@@ -41,7 +41,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
             size = Element.drawList.Count;
             for (int i = 0; i < size; i++)//绘制选中点图
             {
-                Vec2 item = Element.drawList.ElementAt(i);
+                Point item = Element.drawList.ElementAt(i);
 
 
                 cGContext.SetFillColor(UIColor.Red.CGColor);
@@ -49,7 +49,7 @@ namespace Plugin.GuestureLock.iOS.Renderers
                 cGContext.DrawPath(CGPathDrawingMode.Fill);
                 if (i < size - 1)
                 {
-                    Vec2 item2 = Element.drawList.ElementAt(i + 1);
+                    Point item2 = Element.drawList.ElementAt(i + 1);
 
                     cGContext.SetStrokeColor(UIColor.Red.CGColor);
                     cGContext.MoveTo((float)item.X, (float)item.Y);
@@ -88,10 +88,6 @@ namespace Plugin.GuestureLock.iOS.Renderers
             }
 
         }
-
-
-        //private double touch_x = 0;
-        //private double touch_y = 0;
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)
         {

@@ -12,7 +12,18 @@ namespace GuetureLock.Sample
 		public App ()
 		{
 			InitializeComponent();
-			MainPage = new NavigationPage(new MainPage());
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                case Device.iOS:
+                    MainPage = new NavigationPage(new MainPage());
+                   // MainPage = new MainShell();
+                    break;
+                default:
+                    MainPage = new NavigationPage(new MainPage());
+                    break;
+            }
+
 		}
 
 		protected override void OnStart ()

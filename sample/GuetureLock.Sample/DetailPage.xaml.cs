@@ -21,8 +21,10 @@ namespace GuetureLock.Sample
             BindingContext = viewModel;
             Appearing += DetailPage_Appearing;
             Disappearing += DetailPage_Disappearing;
+            
 
-		}
+
+        }
 
         private void DetailPage_Disappearing(object sender, EventArgs e)
         {

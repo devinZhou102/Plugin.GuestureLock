@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
-using Plugin.GuestureLock.Control;
 using Plugin.GuestureLock.Droid.Renderers;
 using Plugin.GuestureLock.Droid.Utils;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using static Android.Views.View;
 using GuestureLockView = Plugin.GuestureLock.Control.GuestureLockView;
+using Point = Xamarin.Forms.Point;
 
 [assembly: ExportRenderer(typeof(GuestureLockView), typeof(GuestureLockViewRenderer))]
 namespace Plugin.GuestureLock.Droid.Renderers
@@ -37,12 +29,15 @@ namespace Plugin.GuestureLock.Droid.Renderers
             {
                 case MotionEventActions.Down:
                 case MotionEventActions.Move:
+                    //System.Diagnostics.Debug.WriteLine("OnTouch  ===== " + e.Action);
                     Element.ProcessTouchEvent(e.GetX(), e.GetY());
                     PostInvalidate();
                     break;
                 case MotionEventActions.Up:
                     Element.Complete();
                     PostInvalidate();
+                    break;
+                case MotionEventActions.Cancel:
                     break;
             }
             return true;
@@ -52,13 +47,12 @@ namespace Plugin.GuestureLock.Droid.Renderers
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
-
             int size = Element.pointList.Count;
             paint.StrokeWidth = 6;
             paint.AntiAlias = true;
             for (int i = 0; i < size; i++)//绘制元素点图
             {
-                Vec2 item = Element.pointList.ElementAt(i);
+                Point item = Element.pointList.ElementAt(i);
                 paint.Color = Android.Graphics.Color.Blue;
                 paint.SetStyle(Paint.Style.Fill);//设置为实心
                 canvas.DrawCircle((int)item.X, (int)item.Y, Element.Circle_r, paint);
@@ -68,13 +62,13 @@ namespace Plugin.GuestureLock.Droid.Renderers
             size = Element.drawList.Count;
             for (int i = 0; i < size; i++)//绘制选中点图
             {
-                Vec2 item = Element.drawList.ElementAt(i);
+                Point item = Element.drawList.ElementAt(i);
                 paint.Color = Android.Graphics.Color.Red;
                 paint.SetStyle(Paint.Style.Fill);//设置为实心
                 canvas.DrawCircle((int)item.X, (int)item.Y, Element.Circle_r, paint);
                 if (i < size - 1)
                 {
-                    Vec2 item2 = Element.drawList.ElementAt(i + 1);
+                    Point item2 = Element.drawList.ElementAt(i + 1);
                     paint.Color = Android.Graphics.Color.Red;
                     canvas.DrawLine((int)item.X, (int)item.Y, (int)item2.X, (int)item2.Y, paint);
                     paint.SetStyle(Paint.Style.Stroke);//设置为空心
@@ -104,7 +98,7 @@ namespace Plugin.GuestureLock.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<GuestureLockView> e)
         {
             base.OnElementChanged(e);
-            Control?.SetOnTouchListener(this);
+
             if (e.NewElement != null)
             {
                 Initialize();
@@ -115,7 +109,7 @@ namespace Plugin.GuestureLock.Droid.Renderers
 
         protected override void Dispose(bool disposing)
         {
-            if(disposing && Element != null)
+            if (disposing && Element != null)
             {
                 Element.Dispose();
             }

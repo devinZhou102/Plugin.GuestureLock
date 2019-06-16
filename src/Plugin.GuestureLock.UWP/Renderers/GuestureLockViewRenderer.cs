@@ -1,18 +1,12 @@
-﻿using Plugin.GuestureLock.UWP.Renderers;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Graphics.Canvas.UI.Xaml;
+using Plugin.GuestureLock.UWP.Renderers;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Microsoft.Graphics.Canvas.UI.Xaml;
-using Xamarin.Forms.Platform.UWP;
-using GuestureLockView = Plugin.GuestureLock.Control.GuestureLockView;
 using System.Numerics;
 using Windows.UI;
-using Windows.UI.Xaml;
+using Windows.UI.Xaml.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.UWP;
+using GuestureLockView = Plugin.GuestureLock.Control.GuestureLockView;
 
 [assembly: ExportRenderer(typeof(GuestureLockView), typeof(GuestureLockViewRenderer))]
 namespace Plugin.GuestureLock.UWP.Renderers
@@ -57,7 +51,7 @@ namespace Plugin.GuestureLock.UWP.Renderers
         }
 
 
-        private Vector2 GetVector2(Vec2 v2)
+        private Vector2 GetVector2(Point v2)
         {
             Vector2 item = new Vector2
             {
